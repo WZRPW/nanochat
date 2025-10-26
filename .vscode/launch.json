@@ -1,0 +1,72 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Python: Tokenizer Training",
+            "type": "python",
+            "request": "launch",
+            "module": "scripts.tok_train",
+            "args": ["--max_chars=2000000000"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Python: Base Model Training",
+            "type": "python",
+            "request": "launch",
+            "module": "scripts.base_train",
+            "args": ["--depth=20", "--run=dummy"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Python: Mid Training",
+            "type": "python",
+            "request": "launch",
+            "module": "scripts.mid_train",
+            "args": ["--run=dummy"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Python: Chat CLI",
+            "type": "python",
+            "request": "launch",
+            "module": "scripts.chat_cli",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Python: Chat Web",
+            "type": "python",
+            "request": "launch",
+            "module": "scripts.chat_web",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Python: Dataset Download",
+            "type": "python",
+            "request": "launch",
+            "module": "nanochat.dataset",
+            "args": ["-n", "8"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
