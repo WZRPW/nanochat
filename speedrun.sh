@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# 1 or more than 1 GPUs
+
 # This script is the "Best ChatGPT clone that $100 can buy",
 # It is designed to run in ~4 hours on 8XH100 node at $3/GPU/hour.
 
@@ -14,6 +16,33 @@
 export OMP_NUM_THREADS=1
 export NANOCHAT_BASE_DIR="$HOME/.cache/nanochat"
 mkdir -p $NANOCHAT_BASE_DIR
+
+# -----------------------------------------------------------------------------
+# Auto-detect number of GPUs
+if command -v nvidia-smi &> /dev/null; then
+    NUM_GPUS=$(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)
+else
+    NUM_GPUS=0
+fi
+
+echo "Detected $NUM_GPUS GPU(s)"
+
+# Set torchrun command based on GPU count
+if [ "$NUM_GPUS" -gt 1 ]; then
+    TORCHRUN_CMD="torchrun --standalone --nproc_per_node=$NUM_GPUS"
+    echo "Using distributed training with $NUM_GPUS GPUs"
+    BATCH_SIZE_ARGS=""
+elif [ "$NUM_GPUS" -eq 1 ]; then
+    TORCHRUN_CMD="python"
+    echo "Using single GPU training (will use gradient accumulation)"
+    echo "Note: Training will take approximately 8x longer than with 8 GPUs"
+    echo "      If you run into OOM errors, reduce --device_batch_size (default: 32)"
+    BATCH_SIZE_ARGS=""
+else
+    TORCHRUN_CMD="python"
+    echo "No GPU detected, using CPU (this will be very slow!)"
+    BATCH_SIZE_ARGS=""
+fi
 
 # -----------------------------------------------------------------------------
 # Python venv setup with uv
@@ -92,11 +121,15 @@ echo "Waiting for dataset download to complete..."
 wait $DATASET_DOWNLOAD_PID
 
 # pretrain the d20 model
-torchrun --standalone --nproc_per_node=8 -m scripts.base_train -- --depth=20 --run=$WANDB_RUN
+if [ "$NUM_GPUS" -gt 1 ]; then
+    $TORCHRUN_CMD -m scripts.base_train -- --depth=20 --run=$WANDB_RUN
+else
+    $TORCHRUN_CMD -m scripts.base_train --depth=20 --run=$WANDB_RUN
+fi
 # evaluate the model on a larger chunk of train/val data and draw some samples
-torchrun --standalone --nproc_per_node=8 -m scripts.base_loss
+$TORCHRUN_CMD -m scripts.base_loss
 # evaluate the model on CORE tasks
-torchrun --standalone --nproc_per_node=8 -m scripts.base_eval
+$TORCHRUN_CMD -m scripts.base_eval
 
 # -----------------------------------------------------------------------------
 # Midtraining (teach the model conversation special tokens, tool use, multiple choice)
@@ -106,15 +139,25 @@ torchrun --standalone --nproc_per_node=8 -m scripts.base_eval
 curl -L -o $NANOCHAT_BASE_DIR/identity_conversations.jsonl https://karpathy-public.s3.us-west-2.amazonaws.com/identity_conversations.jsonl
 
 # run midtraining and eval the model
-torchrun --standalone --nproc_per_node=8 -m scripts.mid_train -- --run=$WANDB_RUN
-torchrun --standalone --nproc_per_node=8 -m scripts.chat_eval -- -i mid
+if [ "$NUM_GPUS" -gt 1 ]; then
+    $TORCHRUN_CMD -m scripts.mid_train -- --run=$WANDB_RUN
+    $TORCHRUN_CMD -m scripts.chat_eval -- -i mid
+else
+    $TORCHRUN_CMD -m scripts.mid_train --run=$WANDB_RUN
+    $TORCHRUN_CMD -m scripts.chat_eval -i mid
+fi
 
 # -----------------------------------------------------------------------------
 # Supervised Finetuning (domain adaptation to each sequence all by itself per row)
 
 # train sft and re-eval right away (should see a small bump)
-torchrun --standalone --nproc_per_node=8 -m scripts.chat_sft -- --run=$WANDB_RUN
-torchrun --standalone --nproc_per_node=8 -m scripts.chat_eval -- -i sft
+if [ "$NUM_GPUS" -gt 1 ]; then
+    $TORCHRUN_CMD -m scripts.chat_sft -- --run=$WANDB_RUN
+    $TORCHRUN_CMD -m scripts.chat_eval -- -i sft
+else
+    $TORCHRUN_CMD -m scripts.chat_sft --run=$WANDB_RUN
+    $TORCHRUN_CMD -m scripts.chat_eval -i sft
+fi
 
 # chat with the model over CLI! Leave out the -p to chat interactively
 # python -m scripts.chat_cli -p "Why is the sky blue?"
@@ -127,9 +170,13 @@ torchrun --standalone --nproc_per_node=8 -m scripts.chat_eval -- -i sft
 # (optional)
 
 # run reinforcement learning
-# torchrun --standalone --nproc_per_node=8 -m scripts.chat_rl -- --run=$WANDB_RUN
-# eval the RL model only on GSM8K
-# torchrun --standalone --nproc_per_node=8 -m scripts.chat_eval -- -i rl -a GSM8K
+# if [ "$NUM_GPUS" -gt 1 ]; then
+#     $TORCHRUN_CMD -m scripts.chat_rl -- --run=$WANDB_RUN
+#     $TORCHRUN_CMD -m scripts.chat_eval -- -i rl -a GSM8K
+# else
+#     $TORCHRUN_CMD -m scripts.chat_rl --run=$WANDB_RUN
+#     $TORCHRUN_CMD -m scripts.chat_eval -i rl -a GSM8K
+# fi
 
 # -----------------------------------------------------------------------------
 # Generate the full report by putting together all the sections
