@@ -7,8 +7,12 @@ import re
 import logging
 import fcntl
 import urllib.request
-import torch
-import torch.distributed as dist
+try:
+    import torch
+    import torch.distributed as dist
+except ImportError:
+    torch = None
+    dist = None
 
 class ColoredFormatter(logging.Formatter):
     """Custom formatter that adds colors to log messages."""
@@ -131,7 +135,9 @@ def get_dist_info():
 
 def autodetect_device_type():
     # prefer to use CUDA if available, otherwise use MPS, otherwise fallback on CPU
-    if torch.cuda.is_available():
+    if torch is None:
+        device_type = "cpu"
+    elif torch.cuda.is_available():
         device_type = "cuda"
     elif torch.backends.mps.is_available():
         device_type = "mps"
@@ -144,31 +150,38 @@ def compute_init(device_type="cuda"): # cuda|cpu|mps
     """Basic initialization that we keep doing over and over, so make common."""
 
     assert device_type in ["cuda", "mps", "cpu"], "Invalid device type atm"
-    if device_type == "cuda":
+    if torch is None:
+        device_type = "cpu"  # fallback to CPU if torch is not available
+    elif device_type == "cuda":
         assert torch.cuda.is_available(), "Your PyTorch installation is not configured for CUDA but device_type is 'cuda'"
-    if device_type == "mps":
+    elif device_type == "mps":
         assert torch.backends.mps.is_available(), "Your PyTorch installation is not configured for MPS but device_type is 'mps'"
 
     # Reproducibility
-    torch.manual_seed(42)
-    if device_type == "cuda":
-        torch.cuda.manual_seed(42)
-    # skipping full reproducibility for now, possibly investigate slowdown later
-    # torch.use_deterministic_algorithms(True)
+    if torch is not None:
+        torch.manual_seed(42)
+        if device_type == "cuda":
+            torch.cuda.manual_seed(42)
+        # skipping full reproducibility for now, possibly investigate slowdown later
+        # torch.use_deterministic_algorithms(True)
 
-    # Precision
-    if device_type == "cuda":
-        torch.set_float32_matmul_precision("high") # uses tf32 instead of fp32 for matmuls
+        # Precision
+        if device_type == "cuda":
+            torch.set_float32_matmul_precision("high") # uses tf32 instead of fp32 for matmuls
 
-    # Distributed setup: Distributed Data Parallel (DDP), optional, and requires CUDA
-    ddp, ddp_rank, ddp_local_rank, ddp_world_size = get_dist_info()
-    if ddp and device_type == "cuda":
-        device = torch.device("cuda", ddp_local_rank)
-        torch.cuda.set_device(device) # make "cuda" default to this device
-        dist.init_process_group(backend="nccl", device_id=device)
-        dist.barrier()
+        # Distributed setup: Distributed Data Parallel (DDP), optional, and requires CUDA
+        ddp, ddp_rank, ddp_local_rank, ddp_world_size = get_dist_info()
+        if ddp and device_type == "cuda":
+            device = torch.device("cuda", ddp_local_rank)
+            torch.cuda.set_device(device) # make "cuda" default to this device
+            dist.init_process_group(backend="nccl", device_id=device)
+            dist.barrier()
+        else:
+            device = torch.device(device_type) # mps|cpu
     else:
-        device = torch.device(device_type) # mps|cpu
+        # Fallback when torch is not available
+        device = None
+        ddp, ddp_rank, ddp_local_rank, ddp_world_size = False, 0, 0, 1
 
     if ddp_rank == 0:
         logger.info(f"Distributed world size: {ddp_world_size}")

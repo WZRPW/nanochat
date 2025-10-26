@@ -10,7 +10,10 @@ import socket
 import datetime
 import platform
 import psutil
-import torch
+try:
+    import torch
+except ImportError:
+    torch = None
 
 def run_command(cmd):
     """Run a shell command and return output, or None if it fails."""
@@ -40,7 +43,7 @@ def get_git_info():
 
 def get_gpu_info():
     """Get GPU information."""
-    if not torch.cuda.is_available():
+    if torch is None or not torch.cuda.is_available():
         return {"available": False}
 
     num_devices = torch.cuda.device_count()
@@ -69,7 +72,7 @@ def get_system_info():
     info['hostname'] = socket.gethostname()
     info['platform'] = platform.system()
     info['python_version'] = platform.python_version()
-    info['torch_version'] = torch.__version__
+    info['torch_version'] = torch.__version__ if torch else "not available"
 
     # CPU and memory
     info['cpu_count'] = psutil.cpu_count(logical=False)
@@ -162,6 +165,8 @@ Generated: {timestamp}
 
     # bloat metrics: package all of the source code and assess its weight
     packaged = run_command('files-to-prompt . -e py -e md -e rs -e html -e toml -e sh --ignore "*target*" --cxml')
+    if packaged is None:
+        packaged = ""  # fallback if files-to-prompt fails
     num_chars = len(packaged)
     num_lines = len(packaged.split('\n'))
     num_files = len([x for x in packaged.split('\n') if x.startswith('<source>')])
