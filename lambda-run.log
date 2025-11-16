@@ -1,0 +1,1058 @@
+
+ubuntu@163-192-199-68:~$ nvidia-smi
+Wed Oct 22 00:24:43 2025
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.148.08             Driver Version: 570.148.08     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-80GB          On  |   00000000:06:00.0 Off |                    0 |
+| N/A   34C    P0             64W /  400W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A100-SXM4-80GB          On  |   00000000:07:00.0 Off |                    0 |
+| N/A   32C    P0             67W /  400W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   2  NVIDIA A100-SXM4-80GB          On  |   00000000:08:00.0 Off |                    0 |
+| N/A   31C    P0             62W /  400W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   3  NVIDIA A100-SXM4-80GB          On  |   00000000:09:00.0 Off |                    0 |
+| N/A   31C    P0             63W /  400W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   4  NVIDIA A100-SXM4-80GB          On  |   00000000:0A:00.0 Off |                    0 |
+| N/A   32C    P0             65W /  400W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   5  NVIDIA A100-SXM4-80GB          On  |   00000000:0B:00.0 Off |                    0 |
+| N/A   30C    P0             63W /  400W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   6  NVIDIA A100-SXM4-80GB          On  |   00000000:0C:00.0 Off |                    0 |
+| N/A   31C    P0             63W /  400W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   7  NVIDIA A100-SXM4-80GB          On  |   00000000:0D:00.0 Off |                    0 |
+| N/A   32C    P0             64W /  400W |       0MiB /  81920MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+ubuntu@163-192-199-68:~$ git clone clear
+fatal: repository 'clear' does not exist
+ubuntu@163-192-199-68:~$ sudo apt update & sudo apt install git -y & git --version
+[1] 7858
+[2] 7859
+git version 2.34.1
+Reading package lists... Done
+Get:1 https://download.docker.com/linux/ubuntu jammy InRelease [48.5 kB]
+Building dependency tree... Done.com (185.125.190.82)] [Connecting to security.
+Reading state information... Done
+Get:2 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages [58.0 kB]
+0% [Waiting for headers] [Waiting for headers] [Waiting for headers] [Waiting fgit is already the newest version (1:2.34.1-1ubuntu1.12).
+Ign:3 http://linux.mellanox.com/public/repo/doca/2.9.2/ubuntu22.04/x86_64 ./ InRelease
+Get:4 https://nvidia.github.io/libnvidia-container/stable/deb/amd64  InRelease [1477 B]
+Get:5 https://packages.microsoft.com/repos/azure-cli jammy InRelease [3596 B]
+Hit:6 http://archive.ubuntu.com/ubuntu jammy InRelease
+Get:7 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:8 https://pkg.cloudflare.com/cloudflared jammy InRelease [4279 B]
+Hit:9 http://linux.mellanox.com/public/repo/doca/2.9.2/ubuntu22.04/x86_64 ./ Release
+Get:10 https://nvidia.github.io/libnvidia-container/stable/deb/amd64  Packages [22.3 kB]
+Get:11 https://packages.microsoft.com/repos/azure-cli jammy/main amd64 Packages [2703 B]
+Get:12 http://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy InRelease [18.1 kB]
+Get:13 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+0% [13 InRelease 18.5 kB/128 kB 14%] [7 InRelease 48.9 kB/129 kB 38%] [Waiting 0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+Hit:14 https://ppa.launchpadcontent.net/flexiondotorg/nvtop/ubuntu jammy InRelease
+Get:16 https://pkg.cloudflare.com/cloudflared jammy/main amd64 Packages [377 B]
+Get:17 http://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy/main amd64 Packages [32.4 kB]
+Get:18 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:19 http://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy/main Translation-en [5680 B]
+Get:20 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [2767 kB]
+Get:21 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [3027 kB]
+Get:22 http://archive.lambdalabs.com/ubuntu jammy InRelease [3911 B]
+Get:23 http://archive.lambdalabs.com/ubuntu jammy/main amd64 Packages [103 kB]
+Get:24 http://security.ubuntu.com/ubuntu jammy-security/main Translation-en [402 kB]
+Get:25 http://security.ubuntu.com/ubuntu jammy-security/main amd64 c-n-f Metadata [13.9 kB]
+Get:26 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [4601 kB]
+Get:27 http://archive.ubuntu.com/ubuntu jammy-updates/main Translation-en [469 kB]
+Get:28 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 c-n-f Metadata [19.0 kB]
+Get:29 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [4755 kB]
+Get:30 http://security.ubuntu.com/ubuntu jammy-security/restricted Translation-en [852 kB]
+Get:31 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 c-n-f Metadata [652 B]
+Get:32 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1007 kB]
+Get:33 http://security.ubuntu.com/ubuntu jammy-security/universe Translation-en [220 kB]
+Get:34 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 c-n-f Metadata [22.4 kB]
+Get:35 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [50.5 kB]
+Get:36 http://security.ubuntu.com/ubuntu jammy-security/multiverse Translation-en [10.2 kB]
+Get:37 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 c-n-f Metadata [376 B]
+Get:38 http://archive.ubuntu.com/ubuntu jammy-updates/restricted Translation-en [882 kB]
+Get:39 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 c-n-f Metadata [640 B]
+Get:40 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1241 kB]
+Get:41 http://archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [307 kB]
+Get:42 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 c-n-f Metadata [29.8 kB]
+Get:43 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [57.6 kB]
+Get:44 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse Translation-en [13.2 kB]
+Get:45 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 c-n-f Metadata [600 B]
+Get:46 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [69.4 kB]
+Get:47 http://archive.ubuntu.com/ubuntu jammy-backports/main Translation-en [11.5 kB]
+Get:48 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 c-n-f Metadata [412 B]
+Get:49 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [30.1 kB]
+Get:50 http://archive.ubuntu.com/ubuntu jammy-backports/universe Translation-en [16.6 kB]
+Get:51 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 c-n-f Metadata [672 B]
+Fetched 21.6 MB in 4s (5119 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+142 packages can be upgraded. Run 'apt list --upgradable' to see them.
+
+[1]-  Done                    sudo apt update
+[2]+  Done                    sudo apt install git -y
+ubuntu@163-192-199-68:~$
+ubuntu@163-192-199-68:~$
+ubuntu@163-192-199-68:~$ git --version
+git version 2.34.1
+ubuntu@163-192-199-68:~$ sudo apt install git -y^C
+ubuntu@163-192-199-68:~$ git clone https://github.com/karpathy/nanochat.git
+Cloning into 'nanochat'...
+remote: Enumerating objects: 284, done.
+remote: Counting objects: 100% (235/235), done.
+remote: Compressing objects: 100% (165/165), done.
+remote: Total 284 (delta 153), reused 71 (delta 70), pack-reused 49 (from 2)
+Receiving objects: 100% (284/284), 321.02 KiB | 5.02 MiB/s, done.
+Resolving deltas: 100% (157/157), done.
+ubuntu@163-192-199-68:~$ ls
+nanochat
+ubuntu@163-192-199-68:~$ cd nanochat/
+ubuntu@163-192-199-68:~/nanochat$ sl
+Command 'sl' not found, but can be installed with:
+sudo apt install sl
+ubuntu@163-192-199-68:~/nanochat$ ls
+LICENSE  README.md  dev  nanochat  pyproject.toml  run1000.sh  rustbpe  scripts  speedrun.sh  tasks  tests  uv.lock
+ubuntu@163-192-199-68:~/nanochat$ bash speedrun.sh
+downloading uv 0.9.5 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /home/ubuntu/.local/bin
+  uv
+  uvx
+everything's installed!
+Using CPython 3.10.12 interpreter at: /usr/bin/python3.10
+Creating virtual environment at: .venv
+Activate with: source .venv/bin/activate
+Resolved 90 packages in 621ms
+      Built nanochat @ file:///home/ubuntu/nanochat
+Prepared 86 packages in 37.07s
+Installed 86 packages in 289ms
+ + aiohappyeyeballs==2.6.1
+ + aiohttp==3.12.15
+ + aiosignal==1.4.0
+ + annotated-types==0.7.0
+ + anyio==4.10.0
+ + async-timeout==5.0.1
+ + attrs==25.3.0
+ + certifi==2025.8.3
+ + charset-normalizer==3.4.3
+ + click==8.2.1
+ + datasets==4.0.0
+ + dill==0.3.8
+ + exceptiongroup==1.3.0
+ + fastapi==0.117.1
+ + filelock==3.19.1
+ + files-to-prompt==0.6
+ + frozenlist==1.7.0
+ + fsspec==2025.3.0
+ + gitdb==4.0.12
+ + gitpython==3.1.45
+ + h11==0.16.0
+ + hf-xet==1.1.9
+ + huggingface-hub==0.34.4
+ + idna==3.10
+ + iniconfig==2.1.0
+ + jinja2==3.1.6
+ + markupsafe==3.0.2
+ + maturin==1.9.4
+ + mpmath==1.3.0
+ + multidict==6.6.4
+ + multiprocess==0.70.16
+ + nanochat==0.1.0 (from file:///home/ubuntu/nanochat)
+ + networkx==3.4.2
+ + numpy==1.26.4
+ + nvidia-cublas-cu12==12.8.4.1
+ + nvidia-cuda-cupti-cu12==12.8.90
+ + nvidia-cuda-nvrtc-cu12==12.8.93
+ + nvidia-cuda-runtime-cu12==12.8.90
+ + nvidia-cudnn-cu12==9.10.2.21
+ + nvidia-cufft-cu12==11.3.3.83
+ + nvidia-cufile-cu12==1.13.1.3
+ + nvidia-curand-cu12==10.3.9.90
+ + nvidia-cusolver-cu12==11.7.3.90
+ + nvidia-cusparse-cu12==12.5.8.93
+ + nvidia-cusparselt-cu12==0.7.1
+ + nvidia-nccl-cu12==2.27.3
+ + nvidia-nvjitlink-cu12==12.8.93
+ + nvidia-nvtx-cu12==12.8.90
+ + packaging==25.0
+ + pandas==2.3.2
+ + platformdirs==4.4.0
+ + pluggy==1.6.0
+ + propcache==0.3.2
+ + protobuf==6.32.0
+ + psutil==7.1.0
+ + pyarrow==21.0.0
+ + pydantic==2.11.7
+ + pydantic-core==2.33.2
+ + pygments==2.19.2
+ + pytest==8.4.2
+ + python-dateutil==2.9.0.post0
+ + pytz==2025.2
+ + pyyaml==6.0.2
+ + regex==2025.9.1
+ + requests==2.32.5
+ + sentry-sdk==2.35.2
+ + setuptools==80.9.0
+ + six==1.17.0
+ + smmap==5.0.2
+ + sniffio==1.3.1
+ + starlette==0.48.0
+ + sympy==1.14.0
+ + tiktoken==0.11.0
+ + tokenizers==0.22.0
+ + tomli==2.2.1
+ + torch==2.8.0+cu128
+ + tqdm==4.67.1
+ + triton==3.4.0
+ + typing-extensions==4.15.0
+ + typing-inspection==0.4.1
+ + tzdata==2025.2
+ + urllib3==2.5.0
+ + uvicorn==0.36.0
+ + wandb==0.21.3
+ + xxhash==3.5.0
+ + yarl==1.20.1
+Reset report and wrote header to /home/ubuntu/.cache/nanochat/report/header.md
+info: downloading installer
+warn: It looks like you have an existing rustup settings file at:
+warn: /home/ubuntu/.rustup/settings.toml
+warn: Rustup will install the default toolchain as specified in the settings file,
+warn: instead of the one inferred from the default host triple.
+info: profile set to 'default'
+info: default host triple is x86_64-unknown-linux-gnu
+warn: Updating existing toolchain, profile choice will be ignored
+info: syncing channel updates for 'stable-x86_64-unknown-linux-gnu'
+info: default toolchain set to 'stable-x86_64-unknown-linux-gnu'
+
+  stable-x86_64-unknown-linux-gnu unchanged - rustc 1.90.0 (1159e78c4 2025-09-14)
+
+
+Rust is installed now. Great!
+
+To get started you may need to restart your current shell.
+This would reload your PATH environment variable to include
+Cargo's bin directory ($HOME/.cargo/bin).
+
+To configure your current shell, you need to source
+the corresponding env file under $HOME/.cargo.
+
+This is usually done by running one of the following (note the leading DOT):
+. "$HOME/.cargo/env"            # For sh/bash/zsh/ash/dash/pdksh
+source "$HOME/.cargo/env.fish"  # For fish
+source $"($nu.home-path)/.cargo/env.nu"  # For nushell
+    Updating crates.io index
+  Downloaded autocfg v1.5.0
+  Downloaded memoffset v0.9.1
+  Downloaded cfg-if v1.0.3
+  Downloaded rayon v1.11.0
+  Downloaded pyo3-ffi v0.23.5
+  Downloaded castaway v0.2.4
+  Downloaded bit-vec v0.8.0
+  Downloaded bit-set v0.8.0
+  Downloaded regex-automata v0.4.10
+  Downloaded version_check v0.9.5
+  Downloaded wit-bindgen v0.45.1
+  Downloaded unicode-ident v1.0.18
+  Downloaded portable-atomic v1.11.1
+  Downloaded zerocopy-derive v0.8.26
+  Downloaded quote v1.0.40
+  Downloaded regex-syntax v0.8.6
+  Downloaded pyo3-macros v0.23.5
+  Downloaded rayon-core v1.13.0
+  Downloaded libc v0.2.175
+  Downloaded zerocopy v0.8.26
+  Downloaded unindent v0.2.4
+  Downloaded compact_str v0.9.0
+  Downloaded pyo3-macros-backend v0.23.5
+  Downloaded syn v2.0.106
+  Downloaded crossbeam-deque v0.8.6
+  Downloaded hashbrown v0.15.5
+  Downloaded memchr v2.7.5
+  Downloaded proc-macro2 v1.0.101
+  Downloaded log v0.4.28
+  Downloaded itoa v1.0.15
+  Downloaded target-lexicon v0.12.16
+  Downloaded ryu v1.0.20
+  Downloaded rustversion v1.0.22
+  Downloaded r-efi v5.3.0
+  Downloaded pyo3-log v0.12.4
+  Downloaded pyo3-build-config v0.23.5
+  Downloaded once_cell v1.21.3
+  Downloaded heck v0.5.0
+  Downloaded getrandom v0.3.3
+  Downloaded equivalent v1.0.2
+  Downloaded either v1.15.0
+  Downloaded crossbeam-utils v0.8.21
+  Downloaded pyo3 v0.23.5
+  Downloaded static_assertions v1.1.0
+  Downloaded wasi v0.14.4+wasi-0.2.4
+  Downloaded fancy-regex v0.16.1
+  Downloaded indexmap v2.11.0
+  Downloaded crossbeam-epoch v0.9.18
+  Downloaded indoc v2.0.6
+  Downloaded dary_heap v0.3.7
+  Downloaded arc-swap v1.7.1
+  Downloaded ahash v0.8.12
+  Downloaded aho-corasick v1.1.3
+  Downloaded 53 crates (5.6MiB) in 0.36s (largest was `pyo3` at 1.0MiB)
+📦 Including license file `LICENSE`
+🔗 Found pyo3 bindings
+🐍 Found CPython 3.10 at /home/ubuntu/nanochat/.venv/bin/python
+📡 Using build options bindings from pyproject.toml
+Audited 12 packages in 9ms
+   Compiling target-lexicon v0.12.16
+   Compiling once_cell v1.21.3
+   Compiling proc-macro2 v1.0.101
+   Compiling unicode-ident v1.0.18
+   Compiling libc v0.2.175
+   Compiling crossbeam-utils v0.8.21
+   Compiling autocfg v1.5.0
+   Compiling cfg-if v1.0.3
+   Compiling rustversion v1.0.22
+   Compiling heck v0.5.0
+   Compiling memchr v2.7.5
+   Compiling getrandom v0.3.3
+   Compiling rayon-core v1.13.0
+   Compiling zerocopy v0.8.26
+   Compiling version_check v0.9.5
+   Compiling bit-vec v0.8.0
+   Compiling regex-syntax v0.8.6
+   Compiling indoc v2.0.6
+   Compiling unindent v0.2.4
+   Compiling ryu v1.0.20
+   Compiling itoa v1.0.15
+   Compiling equivalent v1.0.2
+   Compiling either v1.15.0
+   Compiling hashbrown v0.15.5
+   Compiling log v0.4.28
+   Compiling arc-swap v1.7.1
+   Compiling static_assertions v1.1.0
+   Compiling dary_heap v0.3.7
+   Compiling ahash v0.8.12
+   Compiling bit-set v0.8.0
+   Compiling memoffset v0.9.1
+   Compiling aho-corasick v1.1.3
+   Compiling pyo3-build-config v0.23.5
+   Compiling castaway v0.2.4
+   Compiling crossbeam-epoch v0.9.18
+   Compiling compact_str v0.9.0
+   Compiling indexmap v2.11.0
+   Compiling quote v1.0.40
+   Compiling syn v2.0.106
+   Compiling crossbeam-deque v0.8.6
+   Compiling rayon v1.11.0
+   Compiling pyo3-macros-backend v0.23.5
+   Compiling pyo3-ffi v0.23.5
+   Compiling pyo3 v0.23.5
+   Compiling regex-automata v0.4.10
+   Compiling fancy-regex v0.16.1
+   Compiling pyo3-macros v0.23.5
+   Compiling pyo3-log v0.12.4
+   Compiling rustbpe v0.1.0 (/home/ubuntu/nanochat/rustbpe)
+    Finished `release` profile [optimized] target(s) in 9.50s
+📦 Built wheel for CPython 3.10 to /tmp/.tmplscTeO/nanochat-0.1.0-cp310-cp310-linux_x86_64.whl
+✏️ Setting installed package as editable
+🛠 Installed nanochat-0.1.0
+Downloading 8 shards using 4 workers...
+Target directory: /home/ubuntu/.cache/nanochat/base_data
+
+Downloading shard_00000.parquet...
+Downloading shard_00001.parquet...
+Downloading shard_00003.parquet...
+Downloading shard_00002.parquet...
+Successfully downloaded shard_00000.parquet
+Downloading shard_00004.parquet...
+Successfully downloaded shard_00003.parquet
+Downloading shard_00005.parquet...
+Successfully downloaded shard_00001.parquet
+Downloading shard_00006.parquet...
+Successfully downloaded shard_00002.parquet
+Downloading shard_00007.parquet...
+Successfully downloaded shard_00005.parquet
+Successfully downloaded shard_00004.parquet
+Successfully downloaded shard_00006.parquet
+Successfully downloaded shard_00007.parquet
+Done! Downloaded: 8/8 shards to /home/ubuntu/.cache/nanochat/base_data
+Downloading 240 shards using 4 workers...
+Target directory: /home/ubuntu/.cache/nanochat/base_data
+
+Skipping /home/ubuntu/.cache/nanochat/base_data/shard_00000.parquet (already exists)
+Skipping /home/ubuntu/.cache/nanochat/base_data/shard_00001.parquet (already exists)
+Skipping /home/ubuntu/.cache/nanochat/base_data/shard_00002.parquet (already exists)
+Skipping /home/ubuntu/.cache/nanochat/base_data/shard_00003.parquet (already exists)
+Skipping /home/ubuntu/.cache/nanochat/base_data/shard_00004.parquet (already exists)
+Skipping /home/ubuntu/.cache/nanochat/base_data/shard_00005.parquet (already exists)
+Skipping /home/ubuntu/.cache/nanochat/base_data/shard_00006.parquet (already exists)
+Downloading shard_00015.parquet...
+Skipping /home/ubuntu/.cache/nanochat/base_data/shard_00007.parquet (already exists)
+Downloading shard_00008.parquet...
+Downloading shard_00030.parquet...
+Downloading shard_00045.parquet...
+max_chars: 2,000,000,000
+doc_cap: 10,000
+vocab_size: 65,536
+2025-10-22 00:29:33,467 - rustbpe - INFO - Processing sequences from iterator (buffer_size: 8192)
+Successfully downloaded shard_00015.parquet
+Downloading shard_00016.parquet...
+Successfully downloaded shard_00045.parquet
+Downloading shard_00046.parquet...
+Successfully downloaded shard_00008.parquet
+Downloading shard_00009.parquet...
+Successfully downloaded shard_00030.parquet
+Downloading shard_00031.parquet...
+Successfully downloaded shard_00009.parquet
+Downloading shard_00010.parquet...
+Successfully downloaded shard_00046.parquet
+Downloading shard_00047.parquet...
+Successfully downloaded shard_00016.parquet
+Downloading shard_00017.parquet...
+Successfully downloaded shard_00031.parquet
+Downloading shard_00032.parquet...
+Successfully downloaded shard_00047.parquet
+Downloading shard_00048.parquet...
+Successfully downloaded shard_00010.parquet
+Downloading shard_00011.parquet...
+Successfully downloaded shard_00017.parquet
+Downloading shard_00018.parquet...
+Successfully downloaded shard_00032.parquet
+Downloading shard_00033.parquet...
+Successfully downloaded shard_00048.parquet
+Downloading shard_00049.parquet...
+Successfully downloaded shard_00011.parquet
+Downloading shard_00012.parquet...
+Successfully downloaded shard_00018.parquet
+Downloading shard_00019.parquet...
+Successfully downloaded shard_00033.parquet
+Downloading shard_00034.parquet...
+Successfully downloaded shard_00012.parquet
+Downloading shard_00013.parquet...
+Successfully downloaded shard_00019.parquet
+Downloading shard_00020.parquet...
+Successfully downloaded shard_00034.parquet
+Downloading shard_00035.parquet...
+Successfully downloaded shard_00049.parquet
+Downloading shard_00050.parquet...
+Successfully downloaded shard_00013.parquet
+Downloading shard_00014.parquet...
+Successfully downloaded shard_00020.parquet
+Downloading shard_00021.parquet...
+Successfully downloaded shard_00035.parquet
+Downloading shard_00036.parquet...
+Successfully downloaded shard_00050.parquet
+Downloading shard_00051.parquet...
+Successfully downloaded shard_00014.parquet
+Downloading shard_00060.parquet...
+Successfully downloaded shard_00021.parquet
+Downloading shard_00022.parquet...
+Successfully downloaded shard_00036.parquet
+Downloading shard_00037.parquet...
+Successfully downloaded shard_00022.parquet
+Downloading shard_00023.parquet...
+Successfully downloaded shard_00051.parquet
+Successfully downloaded shard_00060.parquet
+Downloading shard_00052.parquet...
+Downloading shard_00061.parquet...
+Successfully downloaded shard_00037.parquet
+Downloading shard_00038.parquet...
+Successfully downloaded shard_00052.parquet
+Downloading shard_00053.parquet...
+Successfully downloaded shard_00061.parquet
+Downloading shard_00062.parquet...
+Successfully downloaded shard_00023.parquet
+Downloading shard_00024.parquet...
+Successfully downloaded shard_00038.parquet
+Downloading shard_00039.parquet...
+Successfully downloaded shard_00053.parquet
+Downloading shard_00054.parquet...
+Successfully downloaded shard_00024.parquet
+Downloading shard_00025.parquet...
+Successfully downloaded shard_00062.parquet
+Downloading shard_00063.parquet...
+Successfully downloaded shard_00039.parquet
+Downloading shard_00040.parquet...
+Successfully downloaded shard_00025.parquet
+Downloading shard_00026.parquet...
+Successfully downloaded shard_00054.parquet
+Downloading shard_00055.parquet...
+Successfully downloaded shard_00063.parquet
+Downloading shard_00064.parquet...
+Successfully downloaded shard_00040.parquet
+Downloading shard_00041.parquet...
+Successfully downloaded shard_00026.parquet
+Downloading shard_00027.parquet...
+Successfully downloaded shard_00064.parquet
+Downloading shard_00065.parquet...
+Successfully downloaded shard_00055.parquet
+Downloading shard_00056.parquet...
+Successfully downloaded shard_00041.parquet
+Downloading shard_00042.parquet...
+Successfully downloaded shard_00056.parquet
+Downloading shard_00057.parquet...
+Successfully downloaded shard_00027.parquet
+Downloading shard_00028.parquet...
+Successfully downloaded shard_00065.parquet
+Downloading shard_00066.parquet...
+Successfully downloaded shard_00042.parquet
+Downloading shard_00043.parquet...
+Successfully downloaded shard_00028.parquet
+Downloading shard_00029.parquet...
+Successfully downloaded shard_00057.parquet
+Downloading shard_00058.parquet...
+Successfully downloaded shard_00066.parquet
+Downloading shard_00067.parquet...
+Successfully downloaded shard_00043.parquet
+Downloading shard_00044.parquet...
+Successfully downloaded shard_00058.parquet
+Downloading shard_00059.parquet...
+Successfully downloaded shard_00029.parquet
+Downloading shard_00075.parquet...
+Successfully downloaded shard_00067.parquet
+Downloading shard_00068.parquet...
+Successfully downloaded shard_00044.parquet
+Downloading shard_00090.parquet...
+Successfully downloaded shard_00059.parquet
+Downloading shard_00105.parquet...
+Successfully downloaded shard_00075.parquet
+Downloading shard_00076.parquet...
+Successfully downloaded shard_00068.parquet
+Downloading shard_00069.parquet...
+Successfully downloaded shard_00090.parquet
+Downloading shard_00091.parquet...
+Successfully downloaded shard_00076.parquet
+Downloading shard_00077.parquet...
+Successfully downloaded shard_00105.parquet
+Downloading shard_00106.parquet...
+Successfully downloaded shard_00069.parquet
+Downloading shard_00070.parquet...
+Successfully downloaded shard_00091.parquet
+Downloading shard_00092.parquet...
+Successfully downloaded shard_00077.parquet
+Downloading shard_00078.parquet...
+Successfully downloaded shard_00106.parquet
+Downloading shard_00107.parquet...
+Successfully downloaded shard_00092.parquet
+Downloading shard_00093.parquet...
+Successfully downloaded shard_00070.parquet
+Downloading shard_00071.parquet...
+Successfully downloaded shard_00078.parquet
+Downloading shard_00079.parquet...
+Successfully downloaded shard_00107.parquet
+Downloading shard_00108.parquet...
+Successfully downloaded shard_00079.parquet
+Downloading shard_00080.parquet...
+Successfully downloaded shard_00093.parquet
+Downloading shard_00094.parquet...
+Successfully downloaded shard_00108.parquet
+Downloading shard_00109.parquet...
+Successfully downloaded shard_00071.parquet
+Downloading shard_00072.parquet...
+Successfully downloaded shard_00080.parquet
+Downloading shard_00081.parquet...
+Successfully downloaded shard_00094.parquet
+Downloading shard_00095.parquet...
+Successfully downloaded shard_00109.parquet
+Downloading shard_00110.parquet...
+Successfully downloaded shard_00072.parquet
+Downloading shard_00073.parquet...
+Successfully downloaded shard_00095.parquet
+Downloading shard_00096.parquet...
+Successfully downloaded shard_00081.parquet
+Downloading shard_00082.parquet...
+Successfully downloaded shard_00110.parquet
+Downloading shard_00111.parquet...
+Successfully downloaded shard_00073.parquet
+Downloading shard_00074.parquet...
+Successfully downloaded shard_00082.parquet
+Downloading shard_00083.parquet...
+Successfully downloaded shard_00096.parquet
+Downloading shard_00097.parquet...
+Successfully downloaded shard_00111.parquet
+Downloading shard_00112.parquet...
+Successfully downloaded shard_00074.parquet
+Downloading shard_00120.parquet...
+Successfully downloaded shard_00083.parquet
+Downloading shard_00084.parquet...
+Successfully downloaded shard_00097.parquet
+Downloading shard_00098.parquet...
+Successfully downloaded shard_00112.parquet
+Downloading shard_00113.parquet...
+Successfully downloaded shard_00120.parquet
+Downloading shard_00121.parquet...
+Successfully downloaded shard_00084.parquet
+Downloading shard_00085.parquet...
+Successfully downloaded shard_00098.parquet
+Downloading shard_00099.parquet...
+Successfully downloaded shard_00113.parquet
+Downloading shard_00114.parquet...
+Successfully downloaded shard_00121.parquet
+Downloading shard_00122.parquet...
+Successfully downloaded shard_00099.parquet
+Downloading shard_00100.parquet...
+Successfully downloaded shard_00085.parquet
+Downloading shard_00086.parquet...
+Successfully downloaded shard_00114.parquet
+Downloading shard_00115.parquet...
+Successfully downloaded shard_00122.parquet
+Downloading shard_00123.parquet...
+Successfully downloaded shard_00086.parquet
+Downloading shard_00087.parquet...
+Successfully downloaded shard_00100.parquet
+Downloading shard_00101.parquet...
+Successfully downloaded shard_00115.parquet
+Downloading shard_00116.parquet...
+Successfully downloaded shard_00123.parquet
+Downloading shard_00124.parquet...
+Successfully downloaded shard_00101.parquet
+Downloading shard_00102.parquet...
+Successfully downloaded shard_00087.parquet
+Downloading shard_00088.parquet...
+Successfully downloaded shard_00116.parquet
+Downloading shard_00117.parquet...
+Successfully downloaded shard_00124.parquet
+Downloading shard_00125.parquet...
+Successfully downloaded shard_00088.parquet
+Downloading shard_00089.parquet...
+Successfully downloaded shard_00102.parquet
+Downloading shard_00103.parquet...
+Successfully downloaded shard_00117.parquet
+Downloading shard_00118.parquet...
+Successfully downloaded shard_00125.parquet
+Downloading shard_00126.parquet...
+Successfully downloaded shard_00089.parquet
+Downloading shard_00135.parquet...
+Successfully downloaded shard_00103.parquet
+Downloading shard_00104.parquet...
+Successfully downloaded shard_00118.parquet
+Downloading shard_00119.parquet...
+Successfully downloaded shard_00126.parquet
+Downloading shard_00127.parquet...
+Successfully downloaded shard_00135.parquet
+Downloading shard_00136.parquet...
+Successfully downloaded shard_00104.parquet
+Downloading shard_00150.parquet...
+Successfully downloaded shard_00119.parquet
+Downloading shard_00165.parquet...
+Successfully downloaded shard_00127.parquet
+Downloading shard_00128.parquet...
+Successfully downloaded shard_00136.parquet
+Downloading shard_00137.parquet...
+Successfully downloaded shard_00150.parquet
+Downloading shard_00151.parquet...
+Successfully downloaded shard_00165.parquet
+Downloading shard_00166.parquet...
+Successfully downloaded shard_00128.parquet
+Downloading shard_00129.parquet...
+Successfully downloaded shard_00137.parquet
+Downloading shard_00138.parquet...
+Successfully downloaded shard_00151.parquet
+Downloading shard_00152.parquet...
+Successfully downloaded shard_00166.parquet
+Downloading shard_00167.parquet...
+Successfully downloaded shard_00129.parquet
+Downloading shard_00130.parquet...
+Successfully downloaded shard_00138.parquet
+Downloading shard_00139.parquet...
+Successfully downloaded shard_00139.parquet
+Downloading shard_00140.parquet...
+Successfully downloaded shard_00152.parquet
+Successfully downloaded shard_00167.parquet
+Downloading shard_00153.parquet...
+Downloading shard_00168.parquet...
+Successfully downloaded shard_00130.parquet
+Downloading shard_00131.parquet...
+Successfully downloaded shard_00131.parquet
+Successfully downloaded shard_00140.parquet
+Downloading shard_00132.parquet...
+Successfully downloaded shard_00153.parquet
+Downloading shard_00141.parquet...
+Downloading shard_00154.parquet...
+Successfully downloaded shard_00168.parquet
+Downloading shard_00169.parquet...
+Successfully downloaded shard_00141.parquet
+Downloading shard_00142.parquet...
+Successfully downloaded shard_00154.parquet
+Downloading shard_00155.parquet...
+Successfully downloaded shard_00169.parquet
+Downloading shard_00170.parquet...
+Successfully downloaded shard_00132.parquet
+Downloading shard_00133.parquet...
+Successfully downloaded shard_00142.parquet
+Downloading shard_00143.parquet...
+Successfully downloaded shard_00155.parquet
+Downloading shard_00156.parquet...
+Successfully downloaded shard_00170.parquet
+Downloading shard_00171.parquet...
+Successfully downloaded shard_00133.parquet
+Downloading shard_00134.parquet...
+Successfully downloaded shard_00143.parquet
+Downloading shard_00144.parquet...
+Successfully downloaded shard_00171.parquet
+Downloading shard_00172.parquet...
+Successfully downloaded shard_00156.parquet
+Downloading shard_00157.parquet...
+Successfully downloaded shard_00134.parquet
+Downloading shard_00180.parquet...
+Successfully downloaded shard_00144.parquet
+Downloading shard_00145.parquet...
+Successfully downloaded shard_00172.parquet
+Downloading shard_00173.parquet...
+Successfully downloaded shard_00157.parquet
+Downloading shard_00158.parquet...
+Successfully downloaded shard_00180.parquet
+Downloading shard_00181.parquet...
+Successfully downloaded shard_00173.parquet
+Downloading shard_00174.parquet...
+Successfully downloaded shard_00158.parquet
+Downloading shard_00159.parquet...
+Successfully downloaded shard_00145.parquet
+Downloading shard_00146.parquet...
+Successfully downloaded shard_00181.parquet
+Downloading shard_00182.parquet...
+Successfully downloaded shard_00174.parquet
+Downloading shard_00175.parquet...
+Successfully downloaded shard_00146.parquet
+Downloading shard_00147.parquet...
+Successfully downloaded shard_00159.parquet
+Downloading shard_00160.parquet...
+Successfully downloaded shard_00175.parquet
+Downloading shard_00176.parquet...
+Successfully downloaded shard_00182.parquet
+Downloading shard_00183.parquet...
+Successfully downloaded shard_00160.parquet
+Downloading shard_00161.parquet...
+Successfully downloaded shard_00147.parquet
+Downloading shard_00148.parquet...
+Successfully downloaded shard_00183.parquet
+Downloading shard_00184.parquet...
+Successfully downloaded shard_00176.parquet
+Downloading shard_00177.parquet...
+Successfully downloaded shard_00148.parquet
+Downloading shard_00149.parquet...
+Successfully downloaded shard_00161.parquet
+Downloading shard_00162.parquet...
+Successfully downloaded shard_00149.parquet
+Downloading shard_00195.parquet...
+Successfully downloaded shard_00177.parquet
+Downloading shard_00178.parquet...
+Successfully downloaded shard_00184.parquet
+Downloading shard_00185.parquet...
+Successfully downloaded shard_00162.parquet
+Downloading shard_00163.parquet...
+Successfully downloaded shard_00178.parquet
+Downloading shard_00179.parquet...
+Successfully downloaded shard_00195.parquet
+Downloading shard_00196.parquet...
+Successfully downloaded shard_00185.parquet
+Downloading shard_00186.parquet...
+Successfully downloaded shard_00163.parquet
+Downloading shard_00164.parquet...
+Successfully downloaded shard_00179.parquet
+Downloading shard_00210.parquet...
+Successfully downloaded shard_00196.parquet
+Downloading shard_00197.parquet...
+Successfully downloaded shard_00186.parquet
+Downloading shard_00187.parquet...
+Successfully downloaded shard_00164.parquet
+Downloading shard_00225.parquet...
+Successfully downloaded shard_00210.parquet
+Downloading shard_00211.parquet...
+Successfully downloaded shard_00187.parquet
+Downloading shard_00188.parquet...
+Successfully downloaded shard_00197.parquet
+Downloading shard_00198.parquet...
+Successfully downloaded shard_00225.parquet
+Downloading shard_00226.parquet...
+Successfully downloaded shard_00211.parquet
+Downloading shard_00212.parquet...
+Successfully downloaded shard_00188.parquet
+Downloading shard_00189.parquet...
+Successfully downloaded shard_00198.parquet
+Downloading shard_00199.parquet...
+Successfully downloaded shard_00226.parquet
+Downloading shard_00227.parquet...
+Successfully downloaded shard_00212.parquet
+Downloading shard_00213.parquet...
+Successfully downloaded shard_00189.parquet
+Downloading shard_00190.parquet...
+Successfully downloaded shard_00199.parquet
+Downloading shard_00200.parquet...
+Successfully downloaded shard_00213.parquet
+Downloading shard_00214.parquet...
+Successfully downloaded shard_00227.parquet
+Downloading shard_00228.parquet...
+Successfully downloaded shard_00190.parquet
+Downloading shard_00191.parquet...
+Successfully downloaded shard_00200.parquet
+Downloading shard_00201.parquet...
+Successfully downloaded shard_00214.parquet
+Downloading shard_00215.parquet...
+Successfully downloaded shard_00191.parquet
+Downloading shard_00192.parquet...
+Successfully downloaded shard_00228.parquet
+Downloading shard_00229.parquet...
+Successfully downloaded shard_00201.parquet
+Downloading shard_00202.parquet...
+Successfully downloaded shard_00192.parquet
+Downloading shard_00193.parquet...
+Successfully downloaded shard_00215.parquet
+Downloading shard_00216.parquet...
+Successfully downloaded shard_00229.parquet
+Downloading shard_00230.parquet...
+Successfully downloaded shard_00202.parquet
+Downloading shard_00203.parquet...
+Successfully downloaded shard_00193.parquet
+Downloading shard_00194.parquet...
+Successfully downloaded shard_00216.parquet
+Downloading shard_00217.parquet...
+Successfully downloaded shard_00230.parquet
+Downloading shard_00231.parquet...
+Successfully downloaded shard_00203.parquet
+Downloading shard_00204.parquet...
+Successfully downloaded shard_00231.parquet
+Downloading shard_00232.parquet...
+Successfully downloaded shard_00194.parquet
+Successfully downloaded shard_00217.parquet
+Downloading shard_00218.parquet...
+Successfully downloaded shard_00204.parquet
+Downloading shard_00205.parquet...
+Successfully downloaded shard_00232.parquet
+Downloading shard_00233.parquet...
+Successfully downloaded shard_00218.parquet
+Downloading shard_00219.parquet...
+Successfully downloaded shard_00205.parquet
+Downloading shard_00206.parquet...
+Successfully downloaded shard_00219.parquet
+Downloading shard_00220.parquet...
+Successfully downloaded shard_00233.parquet
+Downloading shard_00234.parquet...
+Successfully downloaded shard_00206.parquet
+Downloading shard_00207.parquet...
+Successfully downloaded shard_00220.parquet
+Downloading shard_00221.parquet...
+Successfully downloaded shard_00234.parquet
+Downloading shard_00235.parquet...
+Successfully downloaded shard_00207.parquet
+Downloading shard_00208.parquet...
+Successfully downloaded shard_00221.parquet
+Downloading shard_00222.parquet...
+Successfully downloaded shard_00208.parquet
+Downloading shard_00209.parquet...
+Successfully downloaded shard_00235.parquet
+Downloading shard_00236.parquet...
+Successfully downloaded shard_00222.parquet
+Downloading shard_00223.parquet...
+Successfully downloaded shard_00209.parquet
+Successfully downloaded shard_00236.parquet
+Downloading shard_00237.parquet...
+Successfully downloaded shard_00223.parquet
+Downloading shard_00224.parquet...
+Successfully downloaded shard_00237.parquet
+Downloading shard_00238.parquet...
+Successfully downloaded shard_00224.parquet
+Successfully downloaded shard_00238.parquet
+Downloading shard_00239.parquet...
+Successfully downloaded shard_00239.parquet
+Done! Downloaded: 240/240 shards to /home/ubuntu/.cache/nanochat/base_data
+2025-10-22 00:30:30,371 - rustbpe - INFO - Processed 373760 sequences total, 1788540 unique
+2025-10-22 00:30:30,518 - rustbpe - INFO - Starting BPE training: 65271 merges to compute
+2025-10-22 00:30:30,519 - rustbpe - INFO - Computing initial pair counts from 1788540 unique sequences
+2025-10-22 00:30:32,830 - rustbpe - INFO - Building heap with 17546 unique pairs
+2025-10-22 00:30:32,832 - rustbpe - INFO - Starting merge loop
+2025-10-22 00:30:37,055 - rustbpe - INFO - Progress: 1% (653/65271 merges) - Last merge: (32, 568) -> 908 (frequency: 179515)
+2025-10-22 00:30:37,597 - rustbpe - INFO - Progress: 2% (1306/65271 merges) - Last merge: (259, 97) -> 1561 (frequency: 77269)
+2025-10-22 00:30:37,925 - rustbpe - INFO - Progress: 3% (1959/65271 merges) - Last merge: (304, 339) -> 2214 (frequency: 47092)
+2025-10-22 00:30:38,224 - rustbpe - INFO - Progress: 4% (2611/65271 merges) - Last merge: (111, 568) -> 2866 (frequency: 32580)
+2025-10-22 00:30:38,469 - rustbpe - INFO - Progress: 5% (3264/65271 merges) - Last merge: (341, 469) -> 3519 (frequency: 24414)
+2025-10-22 00:30:38,660 - rustbpe - INFO - Progress: 6% (3917/65271 merges) - Last merge: (2551, 297) -> 4172 (frequency: 19122)
+2025-10-22 00:30:38,822 - rustbpe - INFO - Progress: 7% (4569/65271 merges) - Last merge: (436, 1244) -> 4824 (frequency: 15555)
+2025-10-22 00:30:39,009 - rustbpe - INFO - Progress: 8% (5222/65271 merges) - Last merge: (3440, 111) -> 5477 (frequency: 12914)
+2025-10-22 00:30:39,156 - rustbpe - INFO - Progress: 9% (5875/65271 merges) - Last merge: (278, 5650) -> 6130 (frequency: 10921)
+2025-10-22 00:30:39,314 - rustbpe - INFO - Progress: 10% (6528/65271 merges) - Last merge: (84, 3509) -> 6783 (frequency: 9375)
+2025-10-22 00:30:39,415 - rustbpe - INFO - Progress: 11% (7180/65271 merges) - Last merge: (71, 319) -> 7435 (frequency: 8139)
+2025-10-22 00:30:39,511 - rustbpe - INFO - Progress: 12% (7833/65271 merges) - Last merge: (93, 46) -> 8088 (frequency: 7155)
+2025-10-22 00:30:39,590 - rustbpe - INFO - Progress: 13% (8486/65271 merges) - Last merge: (264, 5416) -> 8741 (frequency: 6323)
+2025-10-22 00:30:39,700 - rustbpe - INFO - Progress: 14% (9138/65271 merges) - Last merge: (4965, 1487) -> 9393 (frequency: 5627)
+2025-10-22 00:30:39,785 - rustbpe - INFO - Progress: 15% (9791/65271 merges) - Last merge: (2649, 892) -> 10046 (frequency: 5067)
+2025-10-22 00:30:39,882 - rustbpe - INFO - Progress: 16% (10444/65271 merges) - Last merge: (7036, 121) -> 10699 (frequency: 4581)
+2025-10-22 00:30:39,972 - rustbpe - INFO - Progress: 17% (11097/65271 merges) - Last merge: (8202, 665) -> 11352 (frequency: 4135)
+2025-10-22 00:30:40,040 - rustbpe - INFO - Progress: 18% (11749/65271 merges) - Last merge: (388, 322) -> 12004 (frequency: 3774)
+2025-10-22 00:30:40,105 - rustbpe - INFO - Progress: 19% (12402/65271 merges) - Last merge: (422, 115) -> 12657 (frequency: 3486)
+2025-10-22 00:30:40,161 - rustbpe - INFO - Progress: 20% (13055/65271 merges) - Last merge: (7436, 680) -> 13310 (frequency: 3224)
+2025-10-22 00:30:40,237 - rustbpe - INFO - Progress: 21% (13707/65271 merges) - Last merge: (3557, 265) -> 13962 (frequency: 3000)
+2025-10-22 00:30:40,342 - rustbpe - INFO - Progress: 22% (14360/65271 merges) - Last merge: (1223, 2907) -> 14615 (frequency: 2782)
+2025-10-22 00:30:40,399 - rustbpe - INFO - Progress: 23% (15013/65271 merges) - Last merge: (83, 67) -> 15268 (frequency: 2596)
+2025-10-22 00:30:40,465 - rustbpe - INFO - Progress: 24% (15666/65271 merges) - Last merge: (1037, 1153) -> 15921 (frequency: 2421)
+2025-10-22 00:30:40,542 - rustbpe - INFO - Progress: 25% (16318/65271 merges) - Last merge: (340, 681) -> 16573 (frequency: 2268)
+2025-10-22 00:30:40,646 - rustbpe - INFO - Progress: 26% (16971/65271 merges) - Last merge: (295, 1980) -> 17226 (frequency: 2125)
+2025-10-22 00:30:40,708 - rustbpe - INFO - Progress: 27% (17624/65271 merges) - Last merge: (16547, 4763) -> 17879 (frequency: 2004)
+2025-10-22 00:30:40,766 - rustbpe - INFO - Progress: 28% (18276/65271 merges) - Last merge: (264, 15567) -> 18531 (frequency: 1891)
+2025-10-22 00:30:40,813 - rustbpe - INFO - Progress: 29% (18929/65271 merges) - Last merge: (14831, 2223) -> 19184 (frequency: 1788)
+2025-10-22 00:30:40,872 - rustbpe - INFO - Progress: 30% (19582/65271 merges) - Last merge: (1617, 121) -> 19837 (frequency: 1687)
+2025-10-22 00:30:40,906 - rustbpe - INFO - Progress: 31% (20235/65271 merges) - Last merge: (1529, 342) -> 20490 (frequency: 1599)
+2025-10-22 00:30:40,953 - rustbpe - INFO - Progress: 32% (20887/65271 merges) - Last merge: (98, 5762) -> 21142 (frequency: 1513)
+2025-10-22 00:30:40,997 - rustbpe - INFO - Progress: 33% (21540/65271 merges) - Last merge: (1750, 1632) -> 21795 (frequency: 1436)
+2025-10-22 00:30:41,038 - rustbpe - INFO - Progress: 34% (22193/65271 merges) - Last merge: (647, 269) -> 22448 (frequency: 1364)
+2025-10-22 00:30:41,092 - rustbpe - INFO - Progress: 35% (22845/65271 merges) - Last merge: (275, 587) -> 23100 (frequency: 1297)
+2025-10-22 00:30:41,125 - rustbpe - INFO - Progress: 36% (23498/65271 merges) - Last merge: (1768, 10289) -> 23753 (frequency: 1233)
+2025-10-22 00:30:41,168 - rustbpe - INFO - Progress: 37% (24151/65271 merges) - Last merge: (103, 551) -> 24406 (frequency: 1175)
+2025-10-22 00:30:41,212 - rustbpe - INFO - Progress: 38% (24803/65271 merges) - Last merge: (18428, 380) -> 25058 (frequency: 1121)
+2025-10-22 00:30:41,256 - rustbpe - INFO - Progress: 39% (25456/65271 merges) - Last merge: (1086, 9975) -> 25711 (frequency: 1072)
+2025-10-22 00:30:41,294 - rustbpe - INFO - Progress: 40% (26109/65271 merges) - Last merge: (13645, 367) -> 26364 (frequency: 1027)
+2025-10-22 00:30:41,349 - rustbpe - INFO - Progress: 41% (26762/65271 merges) - Last merge: (6190, 9886) -> 27017 (frequency: 985)
+2025-10-22 00:30:41,388 - rustbpe - INFO - Progress: 42% (27414/65271 merges) - Last merge: (1602, 6054) -> 27669 (frequency: 943)
+2025-10-22 00:30:41,432 - rustbpe - INFO - Progress: 43% (28067/65271 merges) - Last merge: (823, 359) -> 28322 (frequency: 903)
+2025-10-22 00:30:41,485 - rustbpe - INFO - Progress: 44% (28720/65271 merges) - Last merge: (2515, 1194) -> 28975 (frequency: 867)
+2025-10-22 00:30:41,518 - rustbpe - INFO - Progress: 45% (29372/65271 merges) - Last merge: (66, 371) -> 29627 (frequency: 834)
+2025-10-22 00:30:41,550 - rustbpe - INFO - Progress: 46% (30025/65271 merges) - Last merge: (325, 925) -> 30280 (frequency: 802)
+2025-10-22 00:30:41,578 - rustbpe - INFO - Progress: 47% (30678/65271 merges) - Last merge: (1079, 339) -> 30933 (frequency: 773)
+2025-10-22 00:30:41,603 - rustbpe - INFO - Progress: 48% (31331/65271 merges) - Last merge: (2918, 15894) -> 31586 (frequency: 747)
+2025-10-22 00:30:41,636 - rustbpe - INFO - Progress: 49% (31983/65271 merges) - Last merge: (4292, 10683) -> 32238 (frequency: 721)
+2025-10-22 00:30:41,667 - rustbpe - INFO - Progress: 50% (32636/65271 merges) - Last merge: (69, 16225) -> 32891 (frequency: 695)
+2025-10-22 00:30:41,705 - rustbpe - INFO - Progress: 51% (33289/65271 merges) - Last merge: (337, 271) -> 33544 (frequency: 671)
+2025-10-22 00:30:41,736 - rustbpe - INFO - Progress: 52% (33941/65271 merges) - Last merge: (11796, 509) -> 34196 (frequency: 649)
+2025-10-22 00:30:41,761 - rustbpe - INFO - Progress: 53% (34594/65271 merges) - Last merge: (8652, 326) -> 34849 (frequency: 627)
+2025-10-22 00:30:41,788 - rustbpe - INFO - Progress: 54% (35247/65271 merges) - Last merge: (340, 259) -> 35502 (frequency: 606)
+2025-10-22 00:30:41,818 - rustbpe - INFO - Progress: 55% (35900/65271 merges) - Last merge: (25892, 115) -> 36155 (frequency: 588)
+2025-10-22 00:30:41,843 - rustbpe - INFO - Progress: 56% (36552/65271 merges) - Last merge: (283, 3480) -> 36807 (frequency: 569)
+2025-10-22 00:30:41,886 - rustbpe - INFO - Progress: 57% (37205/65271 merges) - Last merge: (18415, 145) -> 37460 (frequency: 552)
+2025-10-22 00:30:41,927 - rustbpe - INFO - Progress: 58% (37858/65271 merges) - Last merge: (818, 274) -> 38113 (frequency: 535)
+2025-10-22 00:30:41,955 - rustbpe - INFO - Progress: 59% (38510/65271 merges) - Last merge: (317, 16928) -> 38765 (frequency: 519)
+2025-10-22 00:30:41,978 - rustbpe - INFO - Progress: 60% (39163/65271 merges) - Last merge: (356, 18021) -> 39418 (frequency: 503)
+2025-10-22 00:30:42,000 - rustbpe - INFO - Progress: 61% (39816/65271 merges) - Last merge: (10715, 469) -> 40071 (frequency: 489)
+2025-10-22 00:30:42,025 - rustbpe - INFO - Progress: 62% (40469/65271 merges) - Last merge: (6256, 2262) -> 40724 (frequency: 475)
+2025-10-22 00:30:42,044 - rustbpe - INFO - Progress: 63% (41121/65271 merges) - Last merge: (2385, 4266) -> 41376 (frequency: 460)
+2025-10-22 00:30:42,066 - rustbpe - INFO - Progress: 64% (41774/65271 merges) - Last merge: (3162, 34983) -> 42029 (frequency: 447)
+2025-10-22 00:30:42,102 - rustbpe - INFO - Progress: 65% (42427/65271 merges) - Last merge: (1731, 285) -> 42682 (frequency: 435)
+2025-10-22 00:30:42,122 - rustbpe - INFO - Progress: 66% (43079/65271 merges) - Last merge: (1546, 35673) -> 43334 (frequency: 423)
+2025-10-22 00:30:42,152 - rustbpe - INFO - Progress: 67% (43732/65271 merges) - Last merge: (314, 1090) -> 43987 (frequency: 411)
+2025-10-22 00:30:42,178 - rustbpe - INFO - Progress: 68% (44385/65271 merges) - Last merge: (1016, 99) -> 44640 (frequency: 400)
+2025-10-22 00:30:42,193 - rustbpe - INFO - Progress: 69% (45037/65271 merges) - Last merge: (15144, 302) -> 45292 (frequency: 390)
+2025-10-22 00:30:42,214 - rustbpe - INFO - Progress: 70% (45690/65271 merges) - Last merge: (707, 32845) -> 45945 (frequency: 380)
+2025-10-22 00:30:42,238 - rustbpe - INFO - Progress: 71% (46343/65271 merges) - Last merge: (342, 315) -> 46598 (frequency: 370)
+2025-10-22 00:30:42,259 - rustbpe - INFO - Progress: 72% (46996/65271 merges) - Last merge: (31558, 130) -> 47251 (frequency: 362)
+2025-10-22 00:30:42,282 - rustbpe - INFO - Progress: 73% (47648/65271 merges) - Last merge: (388, 4478) -> 47903 (frequency: 352)
+2025-10-22 00:30:42,303 - rustbpe - INFO - Progress: 74% (48301/65271 merges) - Last merge: (20505, 289) -> 48556 (frequency: 344)
+2025-10-22 00:30:42,318 - rustbpe - INFO - Progress: 75% (48954/65271 merges) - Last merge: (590, 460) -> 49209 (frequency: 335)
+2025-10-22 00:30:42,336 - rustbpe - INFO - Progress: 76% (49606/65271 merges) - Last merge: (407, 31100) -> 49861 (frequency: 327)
+2025-10-22 00:30:42,353 - rustbpe - INFO - Progress: 77% (50259/65271 merges) - Last merge: (13802, 89) -> 50514 (frequency: 320)
+2025-10-22 00:30:42,377 - rustbpe - INFO - Progress: 78% (50912/65271 merges) - Last merge: (420, 12214) -> 51167 (frequency: 312)
+2025-10-22 00:30:42,393 - rustbpe - INFO - Progress: 79% (51565/65271 merges) - Last merge: (8299, 13053) -> 51820 (frequency: 306)
+2025-10-22 00:30:42,407 - rustbpe - INFO - Progress: 80% (52217/65271 merges) - Last merge: (3551, 3651) -> 52472 (frequency: 299)
+2025-10-22 00:30:42,427 - rustbpe - INFO - Progress: 81% (52870/65271 merges) - Last merge: (49193, 528) -> 53125 (frequency: 293)
+2025-10-22 00:30:42,442 - rustbpe - INFO - Progress: 82% (53523/65271 merges) - Last merge: (1074, 7277) -> 53778 (frequency: 286)
+2025-10-22 00:30:42,458 - rustbpe - INFO - Progress: 83% (54175/65271 merges) - Last merge: (71, 1610) -> 54430 (frequency: 280)
+2025-10-22 00:30:42,475 - rustbpe - INFO - Progress: 84% (54828/65271 merges) - Last merge: (277, 757) -> 55083 (frequency: 274)
+2025-10-22 00:30:42,496 - rustbpe - INFO - Progress: 85% (55481/65271 merges) - Last merge: (20664, 55720) -> 55736 (frequency: 269)
+2025-10-22 00:30:42,509 - rustbpe - INFO - Progress: 86% (56134/65271 merges) - Last merge: (33914, 4479) -> 56389 (frequency: 263)
+2025-10-22 00:30:42,528 - rustbpe - INFO - Progress: 87% (56786/65271 merges) - Last merge: (971, 22532) -> 57041 (frequency: 257)
+2025-10-22 00:30:42,543 - rustbpe - INFO - Progress: 88% (57439/65271 merges) - Last merge: (13993, 4663) -> 57694 (frequency: 252)
+2025-10-22 00:30:42,559 - rustbpe - INFO - Progress: 89% (58092/65271 merges) - Last merge: (4588, 47531) -> 58347 (frequency: 247)
+2025-10-22 00:30:42,575 - rustbpe - INFO - Progress: 90% (58744/65271 merges) - Last merge: (10832, 46926) -> 58999 (frequency: 242)
+2025-10-22 00:30:42,594 - rustbpe - INFO - Progress: 91% (59397/65271 merges) - Last merge: (20613, 596) -> 59652 (frequency: 237)
+2025-10-22 00:30:42,616 - rustbpe - INFO - Progress: 92% (60050/65271 merges) - Last merge: (5209, 2426) -> 60305 (frequency: 232)
+2025-10-22 00:30:42,630 - rustbpe - INFO - Progress: 93% (60703/65271 merges) - Last merge: (114, 518) -> 60958 (frequency: 227)
+2025-10-22 00:30:42,703 - rustbpe - INFO - Progress: 94% (61355/65271 merges) - Last merge: (27173, 37056) -> 61610 (frequency: 223)
+2025-10-22 00:30:42,718 - rustbpe - INFO - Progress: 95% (62008/65271 merges) - Last merge: (560, 9077) -> 62263 (frequency: 218)
+2025-10-22 00:30:42,732 - rustbpe - INFO - Progress: 96% (62661/65271 merges) - Last merge: (9055, 736) -> 62916 (frequency: 214)
+2025-10-22 00:30:42,745 - rustbpe - INFO - Progress: 97% (63313/65271 merges) - Last merge: (41763, 274) -> 63568 (frequency: 210)
+2025-10-22 00:30:42,761 - rustbpe - INFO - Progress: 98% (63966/65271 merges) - Last merge: (10426, 10009) -> 64221 (frequency: 206)
+2025-10-22 00:30:42,777 - rustbpe - INFO - Progress: 99% (64619/65271 merges) - Last merge: (407, 75) -> 64874 (frequency: 202)
+2025-10-22 00:30:42,789 - rustbpe - INFO - Progress: 100% (65271/65271 merges) - Last merge: (26074, 107) -> 65526 (frequency: 199)
+2025-10-22 00:30:42,789 - rustbpe - INFO - Finished training: 65271 merges completed
+Training time: 70.30s
+Saved tokenizer encoding to /home/ubuntu/.cache/nanochat/tokenizer/tokenizer.pkl
+Saved token_bytes to /home/ubuntu/.cache/nanochat/tokenizer/token_bytes.pt
+
+Vocab sizes:
+GPT-2: 50257
+GPT-4: 100277
+Ours: 65536
+
+Comparison with GPT-2:
+===============================================================================================
+Text Type  Bytes    GPT-2           Ours            Relative     Better
+                    Tokens  Ratio   Tokens  Ratio   Diff %
+-----------------------------------------------------------------------------------------------
+news       1819     404     4.50    375     4.85       +7.2%     Ours
+korean     893      745     1.20    712     1.25       +4.4%     Ours
+code       1259     576     2.19    492     2.56      +14.6%     Ours
+math       1834     936     1.96    966     1.90       -3.2%     GPT-2
+science    1112     260     4.28    228     4.88      +12.3%     Ours
+fwe-train  4208518  900364  4.67    856883  4.91       +4.8%     Ours
+fwe-val    4908443  1059062 4.63    1010352 4.86       +4.6%     Ours
+
+Comparison with GPT-4:
+===============================================================================================
+Text Type  Bytes    GPT-4           Ours            Relative     Better
+                    Tokens  Ratio   Tokens  Ratio   Diff %
+-----------------------------------------------------------------------------------------------
+news       1819     387     4.70    375     4.85       +3.1%     Ours
+korean     893      364     2.45    712     1.25      -95.6%     GPT-4
+code       1259     309     4.07    492     2.56      -59.2%     GPT-4
+math       1834     832     2.20    966     1.90      -16.1%     GPT-4
+science    1112     249     4.47    228     4.88       +8.4%     Ours
+fwe-train  4208518  874799  4.81    856883  4.91       +2.0%     Ours
+fwe-val    4908443  1029691 4.77    1010352 4.86       +1.9%     Ours
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 24.8M  100 24.8M    0     0  16.7M      0  0:00:01  0:00:01 --:--:-- 16.7M
+Waiting for dataset download to complete...
+
+                                                   █████                 █████
+                                                  ░░███                 ░░███
+ ████████    ██████   ████████    ██████   ██████  ░███████    ██████   ███████
+░░███░░███  ░░░░░███ ░░███░░███  ███░░███ ███░░███ ░███░░███  ░░░░░███ ░░░███░
+ ░███ ░███   ███████  ░███ ░███ ░███ ░███░███ ░░░  ░███ ░███   ███████   ░███
+ ░███ ░███  ███░░███  ░███ ░███ ░███ ░███░███  ███ ░███ ░███  ███░░███   ░███ ███
+ ████ █████░░████████ ████ █████░░██████ ░░██████  ████ █████░░████████  ░░█████
+░░░░ ░░░░░  ░░░░░░░░ ░░░░ ░░░░░  ░░░░░░   ░░░░░░  ░░░░ ░░░░░  ░░░░░░░░    ░░░░░
+
+Overriding: depth = 20
+Overriding: run = dummy
+Autodetected device type: cuda
+2025-10-22 00:31:11,996 - nanochat.common - INFO - Distributed world size: 8
+Vocab size: 65,536
+num_layers: 20
+model_dim: 1280
+num_heads: 10
+num_kv_heads: 10
+Tokens / micro-batch / rank: 32 x 2048 = 65,536
+Tokens / micro-batch: 524,288
+Total batch size 524,288 => gradient accumulation steps: 1
+Number of parameters: 560,988,160
+Estimated FLOPs per token: 3.491758e+09
+Calculated number of iterations from target data:param ratio: 21,400
+Total number of training tokens: 11,219,763,200
+Tokens : Params ratio: 20.00
+Total training FLOPs estimate: 3.917670e+19
+Scaling the LR for the AdamW parameters ∝1/√(1280/768) = 0.774597
+Muon: Grouping 80 params of shape torch.Size([1280, 1280]), device cuda:0, dtype torch.float32
+Muon: Grouping 20 params of shape torch.Size([1280, 5120]), device cuda:0, dtype torch.float32
+Muon: Grouping 20 params of shape torch.Size([5120, 1280]), device cuda:0, dtype torch.float32
+Step 00000 | Validation bpb: 3.3013
